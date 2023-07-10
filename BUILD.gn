@@ -1,0 +1,45 @@
+static_library("main_process") {
+    sources = [
+        # "./mqtt/mqtt.c",
+        "./mqtt/wb_ram.c",
+        "./OLED_FUN/oled.c",
+        "./sys/wb_event.c",
+        "./uart/wb_uart.c",
+        "./gpsM_uart/wb_gpsm.c",
+        "app.c",
+        "./AT_uart/wb_at.c",
+        "./tools/wb_tools.c",
+        # "cJSON.c"
+    ]
+
+    include_dirs = [
+        "./gpsM_uart",
+        "./tools",
+        "./AT_uart",
+        "./config",
+        "../ssd1306",
+        "./OLED_FUN",
+        "./sys",
+        "./mqtt",
+        "./uart",
+        "//utils/native/lite/include",
+        "//kernel/liteos_m/components/cmsis/2.0",
+        "//base/iot_hardware/interfaces/kits/wifiiot_lite",
+        "//base/iot_hardware/peripheral/interfaces/kits",
+        "//vendor/hisi/hi3861/hi3861/third_party/lwip_sack/include",
+        "//foundation/communication/interfaces/kits/wifi_lite/wifiservice",
+        "//device/soc/hisilicon/hi3861v100/hi3861_adapter/hals/communication/wifi_lite/wifiservice",
+        "//device/soc/hisilicon/hi3861v100/hi3861_adapter/kal",
+        "//third_party/nmealib",
+        "//third_party/cJSON",
+    ]
+
+    deps = [
+        "//third_party/nmealib:nmealib_static",
+        # "//third_party/cJSON:cjson_ndk",
+    ]
+
+    public_deps = [
+     "//build/lite/config/component/cJSON:cjson_static",
+    ]
+}
